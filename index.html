@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Telefon Korkutma</title>
+<style>
+  body {
+    margin: 0;
+    height: 100vh;
+    background-color: black;
+    color: white;
+    font-family: 'Courier New', monospace;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    animation: blinkRed 0.5s infinite alternate;
+    text-align: center;
+  }
+  @keyframes blinkRed {
+    0% {
+      background-color: black;
+      color: white;
+      transform: translate(0, 0);
+    }
+    50% {
+      background-color: red;
+      color: yellow;
+      transform: translate(5px, -5px);
+    }
+    100% {
+      background-color: black;
+      color: white;
+      transform: translate(0, 0);
+    }
+  }
+  h1 {
+    font-size: 2.5em;
+  }
+  p {
+    font-size: 1.2em;
+  }
+</style>
+</head>
+<body>
+  <h1>⚠️ Telefonunuz Tehlikede! ⚠️</h1>
+  <p>Virüs tespit edildi! Lütfen dikkatli olun!</p>
+
+<script>
+  // Titreşim fonksiyonu - destekleyen cihazlarda çalışır
+  function vibratePattern() {
+    if (navigator.vibrate) {
+      navigator.vibrate([500, 200, 500, 200, 500]);
+    }
+  }
+  setInterval(vibratePattern, 1000);
+
+  // Otomatik ses oynatma
+  window.onload = function() {
+    const audio = new Audio('https://actions.google.com/sounds/v1/alarms/bugle_tune.ogg');
+    audio.volume = 0.7;
+    audio.play().catch(() => {
+      // Otomatik çalma engellenirse bir şey yapma
+    });
+  }
+</script>
+</body>
+</html>
